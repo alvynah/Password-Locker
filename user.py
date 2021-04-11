@@ -12,4 +12,8 @@ class User:
     def __init__(self, full_name, password):
         self.full_name=full_name
         self.password=password
-   
+    def delete_user(self):
+        '''
+        delete_user method to delete a user from the user_list
+        '''
+        User.user_list.remove(self)
