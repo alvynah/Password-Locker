@@ -1,3 +1,6 @@
+import pyperclip
+import random
+
 class Credentials():
     """
     Create credentials class to help create new objects of credentials
@@ -60,7 +63,13 @@ class Credentials():
         return cls.credentials_list
 
     @classmethod
-    def copy_password(cls, number):
-        credential_found = Credentials.find_credential(account_name)
+    def copy_password(cls, account_name):
+        credential_found = Credentials.get_credential_by_account(account_name)
         pyperclip.copy(credential_found.password)
-    
+
+    def generate_password(stringLength=12):
+        """
+        Generate a random password made of letters ,symbols and numbers
+        """
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return ''.join(random.choice(password) for i in range(stringLength)) 
