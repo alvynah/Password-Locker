@@ -48,11 +48,11 @@ def user_login(full_name,password):
 
 
 # Credentials
-def create_credentials(account,flname,password):
+def create_credentials(account_name,full_name,password):
     '''
     Function to create new credentials
     '''
-    new_credential=Credentials(account,flname,password)
+    new_credential=Credentials(account_name,full_name,password)
     return new_credential
 
 def save_credentials(credential):
@@ -176,6 +176,7 @@ def main():
                      ''')
 
                     short_code=input().lower()
+                    #Create credentials
                     if short_code == 'cc':
                         '''
                         Creating a credentials
@@ -184,6 +185,74 @@ def main():
                         print('\n')
                         print("new Credentials")
                         print("*" *50)
+                        print("Enter account name")
+                        account_name=input().lower()
+                        print("Enter your account username")
+                        full_name=input().lower()
+                        while True:
+                            print(''' Type:
+                            cp -to type your own customized password \n
+                            gp- get generated password
+                            ''')
+                            choice=input().lower()
+                            if choice == 'cp':
+                                password=input("Enter Your Own Password \n")
+                                break
+                            
+                            elif choice == 'gp':
+                                password=generate_password()
+                                break
+                            else:
+                                print("Kindly choose a password option using availed short codes")
+                        save_credentials(create_credentials(account_name,full_name,password))
+                        print(f"\n Credentials for {account_name} account Username: {full_name} is created successfully \n")
+                   
+                    #Displaying credentials
+                    elif short_code == 'dc':
+                        if display_credentials():
+                            print("Below is a list of account credentials you have : ")
+                            print("*"*30)
+                            print("_"*30)
+                            for credential in display_credentials():
+                                print(f''' Account name: {credential.account_name} \n 
+                                User Name:{full_name}\n 
+                                Password:{password}
+                                ''')
+                                print('_' * 30)")
+                            print("*"*30)
+                        else:
+                            print("There are no existing account credentials, Kindly create new ones")
+                    #Finding credentials
+                    elif short_code == "fc":
+                        print("Enter the Account Name for credential you are looking for")
+                        account_name = input().lower()
+                        if find_credential(account_name):
+                            search_credential = find_credential(account_name)
+                            print(f"Account Name : {search_credential.account_name}")
+                            print('-' * 50)
+                            print(f"User Name: {search_credential.full_name} \n  Password :{search_credential.password}")
+                            print('-' * 50)
+                        else:
+                            print("This account does not exist")
+                            print('\n')
+                    #Deleting Credential account
+        elif short_code == "d":
+            print("Enter the account name of the Credentials you want to delete")
+            search_name = input().lower()
+            if find_credential(search_name):
+                search_credential = find_credential(search_name)
+                print("_"*50)
+                search_credential.delete_credentials()
+                print('\n')
+                print(f"Your stored credentials for : {search_credential.account} successfully deleted!!!")
+                print('\n')
+            else:
+                print("That Credential you want to delete does not exist in your store yet")
+
+
+
+                    
+
 
 
 
