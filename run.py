@@ -101,7 +101,7 @@ def main():
     print('\n')
 
     while True:
-        print('''Use these short codes :
+        print('''Use these short codes interact with Password Locker :
         1.cu - create a new user account \n
         2.du - display user accounts \n
         3.lu -log into your existing account \n
@@ -167,7 +167,7 @@ def main():
                 Use these short codes to get around
                 ''')
                 while True:
-                    print('''Use these short codes :
+                    print('''Use these short codes to :
                     1.cc - add a credential\n
                     2.dc - display credentials \n
                     3.fc - find a credential \n
@@ -236,18 +236,40 @@ def main():
                             print("This account does not exist")
                             print('\n')
                     #Deleting Credential account
-        elif short_code == "d":
-            print("Enter the account name of the Credentials you want to delete")
-            search_name = input().lower()
-            if find_credential(search_name):
-                search_credential = find_credential(search_name)
-                print("_"*50)
-                search_credential.delete_credentials()
-                print('\n')
-                print(f"Your stored credentials for : {search_credential.account} successfully deleted!!!")
-                print('\n')
-            else:
-                print("That Credential you want to delete does not exist in your store yet")
+                    elif short_code == "del":
+                        print("Enter the account name of the account credentials you want to delete")
+                        account_name = input().lower()
+                        if find_credential(account_name):
+                            search_credential = find_credential(account_name)
+                            print("_"*50)
+                            search_credential.del_credentials()
+                            print('\n')
+                            print(f"Your account credentials for : {search_credential.account_name} {search-credentials.full_name}  is successfully deleted!!!")
+                            print('\n')
+                        else:
+                            print("This account credentials does not exist in your store yet")
+                    
+                    elif short_code == 'ex':
+                        print(f"Thanks for interacting with credentials {full_name}. See you soon")
+                        print('\n')
+                        break
+                    else:
+                        print('\n')
+                        print("Invalid short_code entered, choose one of the below")
+                        print('\n')
+
+        elif short_code == 'ex':
+            print('\n')
+            print("Bye ......")
+            break
+        else:
+            print("\n")
+            print(f"Thank you for using Password Locker. Interact with app again using the short code")
+            print("\n")   
+if __name__ == '__main__':
+    main()               
+
+
 
 
 
