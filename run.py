@@ -126,6 +126,7 @@ def main():
 
             print('\n')
             print(f" Welcome {full_name}.Enjoy your experience with Password Locker")
+            print("Log in by typing lu to get started")
             print('\n')
             print('\n')
         elif short_code == 'du':
@@ -233,7 +234,7 @@ def main():
                         account_name = input().lower()
                         if find_credential(account_name):
                             search_credential = find_credential(account_name)
-                            print(f"Account Name : {search_credential.account_name}")
+                            print(f"\n Account Name : {search_credential.account_name}")
                             print('-' * 50)
                             print(f"User Name: {search_credential.full_name} \n  Password :{search_credential.password}")
                             print('-' * 50)
