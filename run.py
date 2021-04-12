@@ -97,9 +97,9 @@ def main():
     print("What's your full name")
     full_name =input()
     print('\n')
-    print("*" * 50)
+    print("*" * 70)
     print(f"Olaa {full_name}. Type in the action you would like to perform ")
-    print("*" *50)
+    print("*" *70)
 
     print('\n')
 
@@ -128,10 +128,10 @@ def main():
             save_user(create_user(fname,passwordUser))
 
             print('\n')
-            print("*" * 50)
+            print("*" * 80)
             print(f"Welcome {fname}.Enjoy your experience with Password Locker!")
             print("Log in by typing lu to get started")
-            print("_" * 50)
+            print("_" * 80)
             print('\n')
         elif short_code == 'du':
             '''
@@ -172,14 +172,15 @@ def main():
             else:
                 user_login(fname,passwordUser)
                 print('\n')
-                print("*" * 50)
-                print("-" * 50)
+                print("*" * 100)
+                print("-" * 100)
                 print(f'''
                 Welcome to creating credentials {fname}
                 Use these short codes to get around
                 ''')
                 print("*" *50)
                 print("_" *50)
+                print('\n')
 
                 while True:
                     print('''Use these short codes to :
@@ -218,18 +219,16 @@ def main():
                             
                             elif choice == 'gp':
                                 passwordCred=generate_password()
-                                print("_" * 50)
-                                print("_" * 50)
+                                print("_" * 70)
                                 print('\n')
                                 print(f"password for acount username: {flname} is {passwordCred}")
-                                print("*" * 50)                
+                                print("*" * 70)                
                                 break
                             else:
-                                print("Kindly choose a password option using availed short codes")
+                                print("Kindly type a valid password option using availed short codes")
                         save_credentials(create_credentials(account,flname,passwordCred))
-                        print("#" * 50)
                         print(f"\nCredentials for {account}, account username: {flname} is created successfully \n")
-                        print("#" * 50)
+                        print("_" * 90)
 
                    
                     #Displaying credentials
@@ -244,7 +243,7 @@ def main():
                                 print('_' * 30)
                                 print('*'*30)
                         else:
-                            print("There are no existing account credentials, Kindly create new ones")
+                            print("\nThere are no existing account credentials, Kindly create new ones\n")
                     #Finding credentials
                     elif short_code == "fc":
                         print("Enter the Account Name for credential you are looking for : ")
@@ -266,35 +265,34 @@ def main():
                         account_name = input().lower()
                         if find_credential(account_name):
                             search_credential = find_credential(account_name)
-                            print("_"*50)
+                            print("_"*40)
                             search_credential.delete_credentials()
                             print('\n')
-                            print("*"*30)
-                            print("_"*30)
+                            print("*"*80)
                             print(f"Your account credentials for : {search_credential.account_name} {search_credential.full_name}  is successfully deleted!!!")
                             print('\n')
-                            print("*"*30)
-                            print("_"*30)
+                            print("*"*80)
+                            print("_"*80)
 
                         else:
                             print('\n')
-                            print("_"*30)
+                            print("_"*80)
                             print("Sorry,this account credentials does not exist in your store yet\n")
-                            print("_"*30)
+                            print("_"*80)
                             print('\n')
 
                     
                     elif short_code == 'ex':
-                        print("*"*30)
-                        print("_"*30)
+                        print("*"*80)
+                        print("_"*80)
 
                         print(f"Thanks for interacting with credentials {full_name}. See you again soon")
-                        print("*"*30)
-                        print("_"*30)
+                        print("*"*80)
+                        print("_"*80)
 
                         print('\n')
                         break
-                    elif:
+                    else:
                         print('\n')
                         print("Invalid short_code entered, choose one of the below")
                         print('\n')
@@ -303,7 +301,7 @@ def main():
             print('\n')
             print("Bye.Thanks for using Password Locker......")
             break
-        elif:
+        else:
             print("\n")
             print(f"Invalid command.Type in the correct short code to interact more")
             print("\n")  
