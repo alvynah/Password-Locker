@@ -117,15 +117,15 @@ def main():
             print("*" *50)
 
             print("Enter Full Name")
-            full_name=input()
+            fname=input()
 
             print("Enter Password")
-            password=input()
+            passwordUser=input()
 
-            save_user(create_user(full_name,password))
+            save_user(create_user(fname,passwordUser))
 
             print('\n')
-            print(f" Welcome {full_name}.Enjoy your experience with Password Locker")
+            print(f" Welcome {fname}.Enjoy your experience with Password Locker")
             print("Log in by typing lu to get started")
             print('\n')
             print('\n')
@@ -142,7 +142,6 @@ def main():
 
                     print(f"Username: {user.full_name} --> password: {user.password}")
                     print("-"*10)
-
             else:
                 print('\n')
                 print('There is no existing user in Password Locker')
@@ -156,20 +155,20 @@ def main():
             print("Log into your account")
 
             print("Enter the full name")
-            full_name=input()
+            fname=input()
 
             print("Enter the password")
-            password= input()
+            passwordUser= input()
 
-            if user_login(full_name,password) == None:
+            if user_login(fname,passwordUser) == None:
                   print('\n')
                   print("Please check your credentials(especially the case) or create a new account")
                   print('\n')
             else:
-                user_login(full_name,password)
+                user_login(fname,passwordUser)
                 print('\n')
                 print(f'''\n
-                Welcome to creating credentials {full_name} \n
+                Welcome to creating credentials {fname} \n
                 Use these short codes to get around
                 ''')
                 while True:
@@ -192,9 +191,9 @@ def main():
                         print("new Credentials")
                         print("*" *50)
                         print("Enter account name")
-                        account_name=input().lower()
+                        account=input().lower()
                         print("Enter your account username")
-                        full_name=input().lower()
+                        flname=input().lower()
                         print("Enter password")
                         while True:
                             print(''' 
@@ -204,17 +203,17 @@ def main():
                             ''')
                             choice=input().lower()
                             if choice == 'cp':
-                                password=input("Enter Your Own Password \n")
+                                passwordCred=input("Enter Your Own Password \n")
                                 break
                             
                             elif choice == 'gp':
-                                password=generate_password()
-                                print(f"password for acount username: {full_name} is {password}")
+                                passwordCred=generate_password()
+                                print(f"password for acount username: {flname} is {password}")
                                 break
                             else:
                                 print("Kindly choose a password option using availed short codes")
-                        save_credentials(create_credentials(account_name,full_name,password))
-                        print(f"\nCredentials for {account_name}, account username: {full_name} is created successfully \n")
+                        save_credentials(create_credentials(account,flname,passwordCred))
+                        print(f"\nCredentials for {account}, account username: {flname} is created successfully \n")
                    
                     #Displaying credentials
                     elif short_code == 'dc':
@@ -222,8 +221,9 @@ def main():
                             print("Below is a list of account credentials you have : ")
                             print("*"*30)
                             print("_"*30)
+                            
                             for credential in display_credentials():
-                                print(f"Account name: {credential.account_name} \n User Name:{full_name}\n Password:{password}")
+                                print(f"Account name: {credential.account_name} \n User Name:{credential.full_name}\n Password:{credential.password}")
                                 print('_' * 30)
                                 print('*'*30)
                         else:
@@ -271,7 +271,7 @@ def main():
             break
         else:
             print("\n")
-            print(f"Thank you for using Password Locker. Interact with app again using the short code")
+            print(f"Thank you for using Password Locker. Type in the correct short code to interact more")
             print("\n")  
 
 if __name__ == '__main__':

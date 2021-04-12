@@ -98,7 +98,7 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.save_credentials()
         Credentials.copy_password("Twitter")
 
-        self.assertEqual(self.new_credential.password, pyperclip.paste())
+        self.assertEqual(self.new_credential.email, pyperclip.paste())
 
 
 if __name__ == '__main__':
