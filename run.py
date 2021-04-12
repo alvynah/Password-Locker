@@ -208,7 +208,7 @@ def main():
                             
                             elif choice == 'gp':
                                 passwordCred=generate_password()
-                                print(f"password for acount username: {flname} is {password}")
+                                print(f"password for acount username: {flname} is {passwordCred}")
                                 break
                             else:
                                 print("Kindly choose a password option using availed short codes")
